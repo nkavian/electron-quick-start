@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, Menu} = require('electron')
 const path = require('path')
 
 function createWindow () {
@@ -19,10 +19,35 @@ function createWindow () {
   // mainWindow.webContents.openDevTools()
 }
 
+
+const template = [
+  {
+      label: app.name,
+      submenu: [
+          { role: 'quit' }
+      ]
+  },
+  {
+      label: 'Window Menu 1',
+      role: 'windowMenu'
+  },
+  {
+      label: 'Window Menu 2',
+      submenu: [
+          { role: 'window' }
+      ]
+  }
+]
+
+const menu = Menu.buildFromTemplate(template)
+Menu.setApplicationMenu(menu)
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  createWindow()
+  createWindow()
   createWindow()
   
   app.on('activate', function () {
