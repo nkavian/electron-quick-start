@@ -18,5 +18,8 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^11.2.3"
+  },
+  "dependencies": {
+    "webtorrent-hybrid": "^4.0.3"
   }
 }
